@@ -2,7 +2,7 @@
  * @param {number} n
  * @returns {string}
  */
-const formatTime = n => new Date(n).toTimeString().slice(3, 8)
+const formatTime = n => new Date(n).toTimeString().slice(n < 3.6e6 ? 3 : 0, 8)
 
 /**
  * @typedef {Object} State
