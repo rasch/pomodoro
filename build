@@ -1,0 +1,19 @@
+#!/bin/sh
+
+container=$(buildah from --pull alpine:edge)
+
+trap 'buildah rm "$container"' EXIT INT TERM
+
+buildah run "$container" -- \
+  apk --no-cache add \
+    alsa-plugins-pulse \
+    nodejs \
+    sox
+
+buildah copy "$container" package.json scripts/cli.js scripts/timer.js /app/
+
+buildah config \
+  --entrypoint '["node", "/app/cli.js"]' \
+  "$container"
+
+buildah commit "$container" pomodoro
