@@ -82,7 +82,7 @@ const getParams = () => {
     p("c")(0),
     n => (n % 8 ? n % 4 ? p("b")(300) : p("l")(1200) : p("x")(3000)) * 1000,
     () => p("w")(1500) * 1000,
-    p("v")(5),
+    p("v")(0),
   ]
 }
 
@@ -105,9 +105,8 @@ const updateDisplay = state => {
   document.body.style.background = background
   setFavicon(generateFavicon(background, "papayawhip", String(state.count)))
 
-  for (let i = 7; i < 12; i++) {
-    beep(300, 2 ** i, state.volume, 300 * (i - 6))
-  }
+  ;[396, 417, 528, 639, 741, 852]
+    .forEach((f, i) => beep(256, f, state.volume, 256 * i))
 }
 
 /**
