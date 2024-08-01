@@ -10,7 +10,16 @@ buildah run "$container" -- \
     nodejs \
     sox
 
+buildah run "$container" -- \
+  apk --no-cache add --virtual temp npm
+
 buildah copy "$container" package.json scripts/cli.js scripts/timer.js /app/
+
+buildah run "$container" -- \
+  sh -c 'cd /app && npm install --omit=dev'
+
+buildah run "$container" -- \
+  apk del temp
 
 buildah config \
   --entrypoint '["node", "/app/cli.js"]' \

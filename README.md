@@ -43,3 +43,25 @@ the query string parameter `c` can be used to restart the round that was
 interrupted. For example, to start at round 5:
 
     https://rasch.co/pt/?v=15&c=5
+
+## run locally
+
+The website is easy to run locally since it's static with no build step.
+
+```sh
+git clone https://github.com/rasch/pomodoro.git
+cd pomodoro
+
+# serve with static web server such as darkhttpd
+darkhttpd .
+```
+
+## cli
+
+There is also a command line node application available. The `play` command from
+the `sox` package needs to be installed for the notification sound to work.
+
+```sh
+npm install -g @rasch/pt
+pt -h
+```

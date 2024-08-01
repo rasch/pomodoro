@@ -1,6 +1,28 @@
 {
-	"type": "module",
-	"devDependencies": {
-		"@types/node": "^22.0.0"
-	}
+  "name": "@rasch/pt",
+  "version": "0.1.0",
+  "description": "a command-line pomodoro interval timer",
+  "type": "module",
+  "bin": {
+    "pt": "./src/cli.js"
+  },
+  "files": [
+    "src/cli.js",
+    "src/timer.js"
+  ],
+  "keywords": [
+    "pomodoro",
+    "tabata",
+    "interval",
+    "timer",
+    "cli"
+  ],
+  "author": "Randy Schneck <i@rasch.co>",
+  "license": "0BSD",
+  "devDependencies": {
+    "@types/node": "^22.0.2"
+  },
+  "dependencies": {
+    "lil-argv": "^0.1.1"
+  }
 }
