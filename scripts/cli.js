@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { exec } from "node:child_process"
 import { timer } from "./timer.js"
 import { argv } from "lil-argv"
